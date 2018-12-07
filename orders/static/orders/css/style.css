@@ -1,0 +1,80 @@
+.main {
+    margin-left: 5%;
+    margin-top: 10%;
+     position: relative;
+}
+#app {
+  margin-top: 70px;
+}
+.navbar-dark .navbar-nav .nav-link {
+         color: rgba(255,255,255,1)!important;
+      }
+a {
+    color: #239346 !important;
+}
+
+.no_login {
+     text-align: center;
+}
+
+table, td, th {
+	text-align: center;
+}
+.center_text {
+    text-align: center;
+}
+/*h3{*/
+  /*color: #e73c50!important;*/
+/*}*/
+#cart table, td, th {
+	text-align: left;
+}
+/*.first {*/
+   /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*width: 50%;*/
+/*}*/
+ #detail {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+@media screen and (max-width: 800px) {
+  #detail {
+        text-align: center;
+    }
+
+    h6{
+        font-size: 17px;
+    }
+    .center_h1 {
+        margin-left: 10%;
+    }
+}
+@media only screen and (min-device-width : 767px) and (max-device-width : 1024px) {
+    #picture {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+ h6 {
+        font-size: 23px;
+    }
+
+ .center_h1 {
+        margin-left: 20%;
+    }
+
+}
+@media screen and (min-width: 1024px) {
+   #app {
+        margin-top: 100px;
+    }
+    h6 {
+        font-size: 23px;
+    }
+
+    .center_h1 {
+        margin-left: 30%;
+    }
+}

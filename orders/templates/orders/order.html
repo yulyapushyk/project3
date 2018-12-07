@@ -1,0 +1,32 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}Order{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="center_text">
+        {% if not orders %}
+            <h1>No orders in process</h1>
+        {% else %}
+            <h1 style="color: #239346; font-weight: bold"> Your Order</h1>
+            {% for order in orders %}
+                <h3 style="font-weight: bold"> #{{ order.id }} ({{ order.date|date:"D d M Y" }})
+                    {% if order.done %} done {% else %}in process{% endif %}</h3>
+                {% for item in order.order_items.all %}
+                    <h5>{{ item }}<br>
+                    {% if item.toppings.all|length > 0 %}
+                        <ul>
+                            {% for topping in item.toppings.all %}
+                                <li>{{ topping }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}</h5>
+                {% endfor %}
+                <br>
+                <h4>Total ${{ order.total }}</h4>
+                <hr>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}

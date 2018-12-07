@@ -1,0 +1,24 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}Salad's detail{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="row">
+        <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
+            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Salad</h1>
+            <h1 style="color: #239346; font-weight: bold">{{ salad.name }}</h1><br>
+            <h3><strong>Price:</strong> {{ salad.price }}$</h3>
+            <br>
+            <form action="{% url 'salads_order' salad.id %}" method="post">
+                {% csrf_token %}
+                <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
+                <br><br>
+            </form>
+        </div>
+        <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
+            <img src="{% static 'orders/img/salad.jpg' %}" style="width: 100%;">
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

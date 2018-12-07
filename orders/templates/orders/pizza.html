@@ -1,0 +1,65 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}Pizza detail{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="row">
+        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
+            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Pizza</h1>
+            <h1 style="color: #239346; font-weight: bold">{{ pizza.select_toppings }}</h1><br>
+            <h3><strong>Type: </strong>{{ pizza.type }}</h3>
+            <h3><strong>Size: </strong>{{ pizza.size }}</h3>
+            <h3><strong>Price: </strong>{{ pizza.price }}$</h3>
+            <form action="{% url 'pizza_order' pizza.id %}" method="post">
+                {% csrf_token %}
+                {% if pizza.select_toppings.number == "1 topping"%}
+                    <h3><strong>Add toppings:</strong></h3>
+                    {% for i in "i" %}
+                        <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
+                            <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
+                            {% for topping in toppings %}
+                                <option value="{{ topping }}">{{ topping }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                {% elif pizza.select_toppings.number == "2 toppings"%}
+                    <h3><strong>Add toppings:</strong></h3>
+                    {% for i in "ii" %}
+                        <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
+                            <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
+                            {% for topping in toppings %}
+                                <option value="{{ topping }}">{{ topping }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                {% elif pizza.select_toppings.number == "3 toppings"%}
+                    <h3><strong>Add toppings:</strong></h3>
+                    {% for i in "iii" %}
+                        <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
+                            <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
+                            {% for topping in toppings %}
+                                <option value="{{ topping }}">{{ topping }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                {% elif pizza.select_toppings.number == "Special"%}
+                    <h3>Add toppings:</h3>
+                    {% for i in "iiii" %}
+                        <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
+                            <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
+                            {% for topping in toppings %}
+                                <option value="{{ topping }}">{{ topping }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                {% endif %}<br>
+                <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
+            </form>
+        </div>
+        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+            <img src="{% static 'orders/img/pizza.png' %}" style="width:100%;">
+            <link rel="stylesheet" type="text/css" href="{% static "orders/js/index.js" %}">
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

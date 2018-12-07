@@ -1,0 +1,23 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}Pasta's detail{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="row">
+        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
+            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Pasta</h1>
+            <h1 style="color: #239346; font-weight: bold">{{ pasta.name }}</h1><br>
+            <h3><strong>Price: </strong> {{ pasta.price }}$</h3><br>
+            <form action="{% url 'pasta_order' pasta.id %}" method="post">
+                {% csrf_token %}
+                <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
+                <br><br>
+            </form>
+        </div>
+        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+            <img src="{% static 'orders/img/pasta.jpeg' %}" style="width: 100%">
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

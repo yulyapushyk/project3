@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "orders/css/style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "orders/js/index.js" %}">
+</head>
+<body>
+<header>
+   <div id="app" class="container">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-danger">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url "menu_pizza" %}#">Pizza <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "menu_subs" %}">Subs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "menu_pasta" %}">Pasta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "menu_salads" %}">Salads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "menu_dinner_platters" %}">Dinner Platters</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "orders" %}">Orders</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <span class="navbar-text">Hello, {{ user }}</span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart' %}">Cart ({{ cart_count }})</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                    </li>
+                    {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+    </header>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
