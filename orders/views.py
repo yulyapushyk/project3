@@ -1,18 +1,13 @@
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, PizzaForm
+from .forms import RegisterForm
 from django.contrib.auth import login, authenticate, logout
-from .models import Food, Topping, PizzaType, OrderNumber, Order, User, ExtraSub
-from django.contrib.auth.forms import AuthenticationForm
+from .models import Food, Topping, OrderNumber, Order, User, ExtraSub
 from django.urls import reverse
 from django.db.models import ProtectedError
-from decimal import *
 
 
 # Create your views here.
-def index(request):
-    return render(request, "orders/index.html")
-
 
 def login_view(request):
     if request.method == 'POST':
@@ -46,6 +41,38 @@ def signup(request):
     else:
         form = RegisterForm()
     return render(request, 'orders/signup.html', {'form': form})
+
+
+def cart1(username):
+    try:
+        cart1 = OrderNumber.objects.get(username=username, in_cart=True)
+    except OrderNumber.DoesNotExist:
+        cart1 = OrderNumber(username=username)
+        cart1.save()
+    return cart1
+
+
+def total(order):
+    if not isinstance(order, OrderNumber):
+        raise Http404("{} is not an instance of Order.".format(order))
+    else:
+        items = order.order_items.all().exclude(extra=True)
+        order.total = 0
+        for item in items:
+            order.total += item.price
+        order.save()
+
+
+def cart_count(username):
+    try:
+        cart = OrderNumber.objects.get(username=username, in_cart=True)
+    except OrderNumber.MultipleObjectsReturned:
+        raise Http404("More than one cart found.")
+    except OrderNumber.DoesNotExist:
+        return 0
+    else:
+        # Exclude sub extras in count
+        return cart.order_items.exclude(extra=True).count()
 
 
 def menu_pizza(request):
@@ -163,38 +190,6 @@ def dinner_platters(request, dinner_platter_id):
     dinner_platter = Food.objects.filter(category__name__icontains="Dinner Platters").get(pk=dinner_platter_id)
     return render(request, "orders/dinner_platters.html", {'dinner_platters_list': dinner_platters_list,
                                                            'dinner_platter': dinner_platter, 'cart_count': cart_count(username)})
-
-
-def cart1(username):
-    try:
-        cart1 = OrderNumber.objects.get(username=username, in_cart=True)
-    except OrderNumber.DoesNotExist:
-        cart1 = OrderNumber(username=username)
-        cart1.save()
-    return cart1
-
-
-def total(order):
-    if not isinstance(order, OrderNumber):
-        raise Http404("{} is not an instance of Order.".format(order))
-    else:
-        items = order.order_items.all().exclude(extra=True)
-        order.total = 0
-        for item in items:
-            order.total += item.price
-        order.save()
-
-
-def cart_count(username):
-    try:
-        cart = OrderNumber.objects.get(username=username, in_cart=True)
-    except OrderNumber.MultipleObjectsReturned:
-        raise Http404("More than one cart found.")
-    except OrderNumber.DoesNotExist:
-        return 0
-    else:
-        # Exclude sub extras in count
-        return cart.order_items.exclude(extra=True).count()
 
 
 def pizza_order(request, pizza_id):
