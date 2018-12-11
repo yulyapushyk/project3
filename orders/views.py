@@ -45,11 +45,11 @@ def signup(request):
 
 def cart1(username):
     try:
-        cart1 = OrderNumber.objects.get(username=username, in_cart=True)
+        cart = OrderNumber.objects.get(username=username, in_cart=True)
     except OrderNumber.DoesNotExist:
-        cart1 = OrderNumber(username=username)
-        cart1.save()
-    return cart1
+        cart = OrderNumber(username=username)
+        cart.save()
+    return cart
 
 
 def total(order):
@@ -65,14 +65,14 @@ def total(order):
 
 def cart_count(username):
     try:
-        cart1 = OrderNumber.objects.get(username=username, in_cart=True)
+        cart = OrderNumber.objects.get(username=username, in_cart=True)
     except OrderNumber.MultipleObjectsReturned:
         raise Http404("More than one cart found.")
     except OrderNumber.DoesNotExist:
         return 0
     else:
         # Exclude sub extras in count
-        return cart1.order_items.exclude(extra=True).count()
+        return cart.order_items.exclude(extra=True).count()
 
 
 def menu_pizza(request):
