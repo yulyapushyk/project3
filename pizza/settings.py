@@ -27,7 +27,7 @@ SECRET_KEY = 'i0&iq&e9u9h6(4_7%pt2s9)f=c$kso=k$c$w@fi9215s=1q0^d'
 DEBUG = True
 # DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['yulya-project3.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['yulya-project3.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
