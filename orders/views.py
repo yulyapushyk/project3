@@ -54,7 +54,7 @@ def cart1(username):
 
 def total(order):
     if not isinstance(order, OrderNumber):
-        raise Http404("{} is not an instance of Order.".format(order))
+        raise Http404("{} is not an instance of OrderNumber.".format(order))
     else:
         items = order.order_items.all().exclude(extra=True)
         order.total = 0
@@ -65,14 +65,14 @@ def total(order):
 
 def cart_count(username):
     try:
-        cart = OrderNumber.objects.get(username=username, in_cart=True)
+        cart2 = OrderNumber.objects.get(username=username, in_cart=True)
     except OrderNumber.MultipleObjectsReturned:
         raise Http404("More than one cart found.")
     except OrderNumber.DoesNotExist:
         return 0
     else:
         # Exclude sub extras in count
-        return cart.order_items.exclude(extra=True).count()
+        return cart2.order_items.exclude(extra=True).count()
 
 
 def menu_pizza(request):
