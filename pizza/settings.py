@@ -142,9 +142,9 @@ DEFAULT_TO_EMAIL = 'ylutsiv@gmail.com'
 
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 # # Heroku: Update database configuration from $DATABASE_URL.
 # import dj_database_url
