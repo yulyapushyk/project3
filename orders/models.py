@@ -61,7 +61,6 @@ class Food(models.Model):
                                         blank=True, null=True)
     price = models.ForeignKey(Price, on_delete=models.CASCADE, related_name='food_price')
     extra = models.BooleanField(default=False)
-    # toppings = models.ManyToManyField(Topping, blank=True, related_name='pizza_topping', null=True)
 
     def __str__(self):
         if self.size:
@@ -71,6 +70,7 @@ class Food(models.Model):
 
 class OrderNumber(models.Model):
     username = models.CharField(max_length=64, default='')
+    email = models.CharField(max_length=64, default='')
     date = models.DateTimeField(auto_now_add=True)
     in_cart = models.BooleanField(default=True)
     in_process = models.BooleanField(default=True)
@@ -94,5 +94,5 @@ class Order(models.Model):
         """
         String for representing the Model object.
          """
-        return f"#{self.order_num.id}: {self.food}"
+        return f"{self.food}"
 

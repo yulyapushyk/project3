@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+</head>
+<body>
+<div>
+    <h3>{{ username.first_name|title }} {{ username.last_name|title }}, thanks for your order:</h3>
+    {% for item in cart %}
+        <p>{{ item.food }}
+        {% if item.toppings.all %}
+            <ul>
+                {% for topping in item.toppings.all %}
+                    <li>{{ topping }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </p>
+    {% endfor %}
+    <h3>We're working on it!</h3>
+    <p>Here is detail information about your order http://127.0.0.1:8000/orders.<br><br>
+        Pinocchio's Pizza & Subs<br>
+        74 Winthrop Street Harvard Square<br>
+        617-876-4897<br>
+        pinnocciopizza@gmail.com </p>
+</div>
+</body>
+</html>

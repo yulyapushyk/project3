@@ -5,8 +5,7 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
-            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Pizza</h1>
-            <h1 style="color: #239346; font-weight: bold">{{ pizza.select_toppings }}</h1><br>
+            <h1 style="font-size: 55px;">Pizza {{ pizza.select_toppings }}</h1><br>
             <h3><strong>Type: </strong>{{ pizza.type }}</h3>
             <h3><strong>Size: </strong>{{ pizza.size }}</h3>
             <h3><strong>Price: </strong>{{ pizza.price }}$</h3>
@@ -53,12 +52,14 @@
                         </select>
                     {% endfor %}
                 {% endif %}<br>
+            {% if user.is_authenticated %}
                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
+            {% endif %}
             </form>
+
         </div>
         <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
-            <img src="{% static 'orders/img/pizza.png' %}" style="width:100%;">
-            <link rel="stylesheet" type="text/css" href="{% static "orders/js/index.js" %}">
+            <img src="{% static 'orders/img/pizza.png' %}">
         </div>
     </div>
 {% endif %}

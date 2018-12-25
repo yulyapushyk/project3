@@ -2,7 +2,7 @@
 {% block title %}Dinner Platters{% endblock %}
 {% block content %}
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
-        <th style="font-size: 25px; color: #e73c50" class="text-center">Dinner Platters Small</th><th class="text-center" style="font-size: 25px; color: #e73c50">Price</th></tr>
+        <th class="text-center">Dinner Platters Small</th><th class="text-center">Price</th>
         {% for dinner_platters_small in dinner_platters_small %}
             <tr>
                 <td class="text-center"><a href="{% url 'dinner_platters' dinner_platters_small.id %}">{{ dinner_platters_small.name }}</a></td><td class="text-center">
@@ -12,11 +12,14 @@
     </table>
     <br>
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
-        <th style="font-size: 25px; color: #e73c50" class="text-center">Dinner Platters Large</th><th class="text-center" style="font-size: 25px; color: #e73c50">Price</th></tr>
+        <th class="text-center">Dinner Platters Large</th><th class="text-center">Price</th>
         {% for dinner_platters_large in dinner_platters_large %}
             <tr>
-                <td class="text-center"><a href="{% url 'dinner_platters' dinner_platters_large.id %}">{{ dinner_platters_large.name }}</a></td><td class="text-center">
-                {{ dinner_platters_large.price }}</td>
+                <td class="text-center"><a href="{% url 'dinner_platters' dinner_platters_large.id %}">
+                    {{ dinner_platters_large.name }}</a>
+                </td>
+                <td class="text-center">{{ dinner_platters_large.price }}</td>
+            </tr>
             {% endfor %}
     </table>
 {% endblock %}

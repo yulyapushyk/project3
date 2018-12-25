@@ -5,9 +5,9 @@
 
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
-            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Salad</h1>
-            <h1 style="color: #239346; font-weight: bold">{{ salad.name }}</h1><br>
+        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
+            <h1 style="font-size: 60px;">Salad</h1>
+            <h1>{{ salad.name }}</h1><br>
             <h3><strong>Price:</strong> {{ salad.price }}$</h3>
             <br>
             <form action="{% url 'salads_order' salad.id %}" method="post">
@@ -16,8 +16,8 @@
                 <br><br>
             </form>
         </div>
-        <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
-            <img src="{% static 'orders/img/salad.jpg' %}" style="width: 100%;">
+        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+            <img src="{% static 'orders/img/salad.jpg' %}" style="margin-top: 10px;">
         </div>
     </div>
 {% endif %}

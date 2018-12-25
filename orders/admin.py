@@ -7,7 +7,7 @@ from .models import Category, Topping, Size, PizzaType, Price, ToppingNumber, Fo
 
 class FoodInline(admin.StackedInline):
     model = Food
-    extra = 1
+    extra = 0
     fields = ["name"]
 
 
@@ -34,19 +34,19 @@ class OrderInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    # list_display = ["food"]
     model = Order
     filter_horizontal = ["toppings", "extra_sub",]
-    # list_filter = [""]
     save_on_top = True
 
 
 class OrderNumAdmin(admin.ModelAdmin):
     inlines = [OrderInline]
-    list_display = ["username", "date", "total", "in_cart", "in_process", "done"]
-    list_editable = ["in_cart", "in_process", "done"]
-    list_filter = ["total", "in_cart", "in_process", "done", "username"]
+    list_display = ["id", "username", "date", "total", "in_cart", "in_process", "done", "email"]
+    list_editable = ["in_process", "done"]
+    list_filter = ["total", "in_cart", "in_process", "done", "username", "date"]
     save_on_top = True
+    date_hierarchy = 'date'
+    search_fields = ["username", "id"]
 
 
 admin.site.register(Category, CategoryAdmin)

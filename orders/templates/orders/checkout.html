@@ -4,8 +4,8 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-    <div class="center_text">
-        <h2>{{ username }}, thanks for your order  # {{ order_number.id }}!</h2>
+    <div class="center_text" style="margin-top: 25px;">
+        <h2>{{ username|title }}, thanks for your order  # {{ order_number.id }}!</h2>
         <h4>We're working on it!</h4>
         <nav class="nav flex-column" style="font-weight: bold; font-size: 30px;">
             <a class="nav-link" href="{% url 'menu_pizza' %}">Back to menu</a>

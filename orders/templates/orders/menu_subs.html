@@ -2,20 +2,25 @@
 {% block title %}Subs{% endblock %}
 {% block content %}
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
-        <th class="text-center" style="font-size: 25px; color: #e73c50">Subs Small</th><th class="text-center" style="font-size: 25px; color: #e73c50">Price</th></tr>
+        <th class="text-center">Subs Small</th><th class="text-center">Price</th>
         {% for subs_small in subs_small %}
             <tr>
-                <td class="text-center"><a href="{% url 'subs' subs_small.id %}">{{ subs_small.name }}</a></td>
+                <td class="text-center">
+                    <a href="{% url 'subs' subs_small.id %}">{{ subs_small.name }}</a>
+                </td>
                 <td class="text-center">{{ subs_small.price }}</td>
             </tr>
         {% endfor %}
+        <td style="visibility: hidden">Sausage, Peppers & Onions</td>
     </table>
     <br>
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
-        <th class="text-center" style="font-size: 25px; color: #e73c50">Subs Large</th><th class="text-center" style="font-size: 25px; color: #e73c50">Price</th></tr>
+        <th class="text-center" >Subs Large</th><th class="text-center">Price</th>
         {% for subs_large in subs_large %}
             <tr>
-                <td class="text-center"><a href="{% url 'subs' subs_large.id %}">{{ subs_large.name }}</a></td>
+                <td class="text-center">
+                    <a href="{% url 'subs' subs_large.id %}">{{ subs_large.name }}</a>
+                </td>
                 <td class="text-center">{{ subs_large.price }}</td>
             </tr>
         {% endfor %}

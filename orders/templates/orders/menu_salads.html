@@ -2,11 +2,11 @@
 {% block title %}Salads{% endblock %}
 {% block content %}
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
-        <th style="font-size: 25px; color: #e73c50" class="text-center">Salads</th><th class="text-center" style="font-size: 25px; color: #e73c50">Price</th></tr>
+        <th class="text-center">Salads</th><th class="text-center">Price</th>
         {% for salads in salads %}
             <tr>
-                <td class="text-center"><a href="{% url 'salads' salads.id %}">{{ salads.name }}</a></td><td class="text-center">
-                {{ salads.price }}</td>
+                <td class="text-center"><a href="{% url 'salads' salads.id %}">{{ salads.name }}</a>
+                </td><td class="text-center">{{ salads.price }}</td>
             </tr>
         {% endfor %}
     </table>

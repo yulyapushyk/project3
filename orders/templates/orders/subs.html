@@ -6,8 +6,8 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
-            <h1 style="color: #239346; font-weight: bold; font-size: 60px;">Sub</h1>
-            <h1 style="color: #239346; font-weight: bold">{{ sub.name }}</h1><br>
+            <h1 style="font-size: 60px;">Sub</h1>
+            <h1>{{ sub.name }}</h1><br>
             <h3><strong>Size: </strong> {{ sub.size }}</h3>
             <h3><strong>Price: </strong> {{ sub.price }}$</h3>
             <form action="{% url 'sub_order' sub.id %}" method="post">
@@ -18,16 +18,15 @@
                         <label style=" font-size: 20px;" class="form-check-label" for="extra{{ forloop.counter0|add:'1' }}">{{ extra_sub.name }}</label><br>
                     {% endfor %}
                 {% else %}
-                    <input style="margin-left: 140px; font-size: 20px;"  class="form-check-input" type="checkbox" name="extra0" value="{{ extra_sub.last }}" id="extra0">
-                    <label style="font-size: 20px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label><br><br>
+                    <input style="margin-left: 140px; font-size: 20px; margin-top: 10px;"  class="form-check-input" type="checkbox" name="extra0" value="{{ extra_sub.last }}" id="extra0">
+                    <label style="font-size: 20px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label> <br><br>
                 {% endif %}
-                <br>
-                <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
-                <br><br>
+               <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
+
             </form>
         </div>
         <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
-            <img src="{% static 'orders/img/sub.jpg' %}" style="width: 100%">
+            <img src="{% static 'orders/img/sub.jpg' %}">
         </div>
     </div>
 {% endif %}

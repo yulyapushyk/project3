@@ -1,51 +1,59 @@
-.main {
-    margin-left: 5%;
-    margin-top: 10%;
-     position: relative;
+.main{
+    text-align: center;
 }
-#app {
-  margin-top: 70px;
+.container{
+    margin-bottom: 10px;
 }
 .navbar-dark .navbar-nav .nav-link {
-         color: rgba(255,255,255,1)!important;
-      }
+    color: rgba(255,255,255,1)!important;
+}
 a {
     color: #239346 !important;
 }
-
+h1 {
+    color: #239346;
+    font-weight: bold;
+}
+p{
+    font-size: 20px;
+}
 .no_login {
-     text-align: center;
+    text-align: center;
 }
 
 table, td, th {
 	text-align: center;
 }
+th{
+    font-size: 25px;
+    color: #e73c50;
+}
 .center_text {
     text-align: center;
 }
-/*h3{*/
-  /*color: #e73c50!important;*/
-/*}*/
+
 #cart table, td, th {
 	text-align: left;
 }
-/*.first {*/
-   /*display: block;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*width: 50%;*/
-/*}*/
- #detail {
-        margin-top: auto;
-        margin-bottom: auto;
-    }
+img{
+    width: 100%;
+}
+#detail, #picture {
+     margin-top: auto!important;
+     margin-bottom: auto!important;
+ }
 
 @media screen and (max-width: 800px) {
-  #detail {
+    #detail {
         text-align: center;
     }
-
     h6{
+        font-size: 16px;
+    }
+    h5{
+        font-size: 16px;
+    }
+    ul {
         font-size: 17px;
     }
     .center_h1 {
@@ -53,27 +61,18 @@ table, td, th {
     }
 }
 @media only screen and (min-device-width : 767px) and (max-device-width : 1024px) {
-    #picture {
-        margin-top: auto;
-        margin-bottom: auto;
-    }
+
  h6 {
         font-size: 23px;
     }
-
  .center_h1 {
         margin-left: 20%;
     }
-
 }
 @media screen and (min-width: 1024px) {
-   #app {
-        margin-top: 100px;
-    }
     h6 {
         font-size: 23px;
     }
-
     .center_h1 {
         margin-left: 30%;
     }

@@ -1,0 +1,38 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}Order{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    {%  if user.is_staff %}
+            {% for order in orders %}
+                <div class="row" style="margin-top: 15px;">
+                    <div id="detail" class="col-sm-12 col-md-6 col-lg-7">
+                        <h5><strong>Order:</strong> #{{ order.id }}</h5>
+                        <h5><strong>User:</strong> {{ order.username }}</h5>
+                        <h5><strong>Date:</strong> {{ order.date }}</h5>
+                        <form action="{% url 'send_email' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="order_id" value="{{ order.id }}"/>
+                            <input type="submit" class="btn btn-success" value="Done"/>
+                        </form>
+                    </div>
+                    <div id="detail" class="col-sm-12 col-md-6 col-lg-5">
+                        {% for item in order.order_items.all %}
+                            <h5>{{ item }}
+                                {% if item.toppings.all|length > 0 %}
+                                    <ul style="font-size: 20px;">
+                                        {% for topping in item.toppings.all %}
+                                            <li>{{ topping }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %} </h5>
+                        {% endfor %}
+                        <h5><strong>Total {{ order.total }}$</strong></h5>
+                    </div>
+                </div><hr>
+            {% endfor %}
+        {% endif %}
+{#    {% endif %}#}
+{% endif %}
+{% endblock %}
