@@ -5,11 +5,12 @@
 
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail_sub" class="col-sm-12 col-md-5 col-lg-6">
-            <h1 style="font-size: 60px;">Sub</h1>
+        <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
+            <h1 id="big">Sub</h1>
             <h1>{{ sub.name }}</h1>
             <h3><strong>Size: </strong> {{ sub.size }}</h3>
             <h3><strong>Price: </strong> {{ sub.price }}$</h3>
+        <div id="detail_sub" >
             <form action="{% url 'sub_order' sub.id %}" method="post">
                 {% csrf_token %}
                 {% if sub.id == 41  or sub.id == 42 %}
@@ -23,6 +24,7 @@
                 {% endif %}
                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></form><br>
             </form>
+        </div>
         </div>
         <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
             <img src="{% static 'orders/img/sub.jpg' %}">

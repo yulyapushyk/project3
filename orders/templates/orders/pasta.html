@@ -5,16 +5,16 @@
 
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail" class="col-sm-12 col-md-4 col-lg-6">
-            <h1 style="font-size: 60px;">Pasta</h1>
-            <h1>{{ pasta.name }}</h1><br>
+        <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
+            <h1 id="big">Pasta</h1>
+            <h1>{{ pasta.name }}</h1>
             <h3><strong>Price: </strong> {{ pasta.price }}$</h3><br>
             <form action="{% url 'pasta_order' pasta.id %}" method="post">
                 {% csrf_token %}
                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
             </form>
         </div>
-        <div id="picture" class="col-sm-12 col-md-8 col-lg-6">
+        <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
             <img src="{% static 'orders/img/pasta.jpeg' %}" style="margin-top: 10px;">
         </div>
     </div>
