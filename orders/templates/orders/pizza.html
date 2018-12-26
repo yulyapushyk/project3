@@ -51,12 +51,10 @@
                             {% endfor %}
                         </select>
                     {% endfor %}
-                {% endif %}<br>
-            {% if user.is_authenticated %}
-                <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
-            {% endif %}
+                {% endif %}
+            <div id="button">
+                <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
             </form>
-
         </div>
         <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
             <img src="{% static 'orders/img/pizza.png' %}">

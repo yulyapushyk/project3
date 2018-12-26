@@ -9,11 +9,11 @@
             <h1 id="big">Salad</h1>
             <h1>{{ salad.name }}</h1>
             <h3><strong>Price:</strong> {{ salad.price }}$</h3>
-            <br>
             <form action="{% url 'salads_order' salad.id %}" method="post">
                 {% csrf_token %}
+                <div id="button">
                 <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
-                <br><br>
+                </div>
             </form>
         </div>
         <div id="picture" class="col-sm-12 col-md-6 col-lg-6">

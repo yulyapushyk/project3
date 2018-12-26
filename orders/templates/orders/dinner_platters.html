@@ -5,14 +5,13 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
-            <h1 id="big">Dinner Platters</h1>
-            <h1>{{ dinner_platter.name }}</h1>
+            <h1 id="big">Dinner Platters {{ dinner_platter.name }}</h1>
             <h3><strong>Size:</strong> {{ dinner_platter.size }}</h3>
-            <h3><strong>Price:</strong> {{ dinner_platter.price }}$</h3><br>
+            <h3><strong>Price:</strong> {{ dinner_platter.price }}$</h3>
             <form action="{% url 'dinner_platters_order' dinner_platter.id %}" method="post">
                 {% csrf_token %}
-                <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" />
-                <br><br>
+                <div id="button">
+                    <input class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
             </form>
         </div>
         <div id="picture" class="col-sm-12 col-md-7 col-lg-6">

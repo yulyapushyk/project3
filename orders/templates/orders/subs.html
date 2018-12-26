@@ -6,8 +6,7 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
-            <h1 id="big">Sub</h1>
-            <h1>{{ sub.name }}</h1>
+            <h1 id="big">Sub {{ sub.name }}</h1>
             <h3><strong>Size: </strong> {{ sub.size }}</h3>
             <h3><strong>Price: </strong> {{ sub.price }}$</h3>
         <div id="detail_sub" >
@@ -20,9 +19,10 @@
                     {% endfor %}
                 {% else %}
                     <input style="margin-left: 140px; font-size: 20px; margin-top: 10px;"  class="form-check-input" type="checkbox" name="extra0" value="{{ extra_sub.last }}" id="extra0">
-                    <label style="font-size: 20px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label> <br><br>
+                    <label style="font-size: 20px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label>
                 {% endif %}
-                <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></form><br>
+             <div id="button">
+                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
             </form>
         </div>
         </div>

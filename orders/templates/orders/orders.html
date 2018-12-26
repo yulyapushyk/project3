@@ -21,7 +21,7 @@
                         {% for item in order.order_items.all %}
                             <h5>{{ item }}
                                 {% if item.toppings.all|length > 0 %}
-                                    <ul style="font-size: 20px;">
+                                    <ul>
                                         {% for topping in item.toppings.all %}
                                             <li>{{ topping }}</li>
                                         {% endfor %}

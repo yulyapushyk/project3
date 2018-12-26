@@ -14,6 +14,9 @@ h1 {
     color: #239346;
     font-weight: bold;
 }
+#button{
+    padding: 7px;
+}
 p{
     font-size: 20px;
 }
@@ -31,6 +34,9 @@ table, td, th {
 th{
     font-size: 25px;
     color: #e73c50;
+}
+ul{
+    font-size: 20px;
 }
 .center_text {
     text-align: center;
@@ -56,7 +62,7 @@ img{
     }
     #detail_sub{
         text-align: left;
-        padding-left: 30%;
+        padding-left: 27%;
     }
     h6{
         font-size: 16px;
@@ -65,17 +71,18 @@ img{
         font-size: 16px;
     }
     ul {
-        font-size: 17px;
+        font-size: 16px;
     }
     h1, #big{
-     font-size: 30px;
+     font-size: 23px;
     }
     h3{
-        font-size: 23px;
+        font-size: 19px;
     }
     .center_h1 {
         margin-left: 10%;
     }
+
 }
 @media only screen and (min-device-width : 767px) and (max-device-width : 1024px) {
  h6 {
