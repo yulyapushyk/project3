@@ -5,7 +5,7 @@
 
 {% if user.is_authenticated %}
     <div class="center_text">
-        <h1>Your Cart</h1>
+        <h2>Your Cart</h2>
         {% if not cart %}
             <h3 style="font-weight: bold;">Empty cart</h3>
         {% else %}
@@ -32,10 +32,7 @@
                     </div>
                 </div>
             {% endfor %}
-            <br>
-
-            <h2 style="font-weight: bold;">Total {{ total }} $</h2>
-            <br>
+            <h3><strong>Total</strong> {{ total }} $</h3>
             <form action="{% url 'checkout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn-lg btn-success">Order</button>

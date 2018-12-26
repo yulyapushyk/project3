@@ -4,15 +4,15 @@
 {% block content %}
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
-            <h1 style="font-size: 55px;">Pizza {{ pizza.select_toppings }}</h1><br>
-            <h3><strong>Type: </strong>{{ pizza.type }}</h3>
-            <h3><strong>Size: </strong>{{ pizza.size }}</h3>
-            <h3><strong>Price: </strong>{{ pizza.price }}$</h3>
+        <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
+            <h1 style="font-size: 50px;">Pizza {{ pizza.select_toppings }}</h1>
+            <h4><strong>Type: </strong>{{ pizza.type }}</h4>
+            <h4><strong>Size: </strong>{{ pizza.size }}</h4>
+            <h4><strong>Price: </strong>{{ pizza.price }}$</h4>
             <form action="{% url 'pizza_order' pizza.id %}" method="post">
                 {% csrf_token %}
                 {% if pizza.select_toppings.number == "1 topping"%}
-                    <h3><strong>Add toppings:</strong></h3>
+                    <h4><strong>Add toppings:</strong></h4>
                     {% for i in "i" %}
                         <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
                             <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
@@ -22,7 +22,7 @@
                         </select>
                     {% endfor %}
                 {% elif pizza.select_toppings.number == "2 toppings"%}
-                    <h3><strong>Add toppings:</strong></h3>
+                    <h4><strong>Add toppings:</strong></h4>
                     {% for i in "ii" %}
                         <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
                             <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
@@ -32,7 +32,7 @@
                         </select>
                     {% endfor %}
                 {% elif pizza.select_toppings.number == "3 toppings"%}
-                    <h3><strong>Add toppings:</strong></h3>
+                    <h4><strong>Add toppings:</strong></h4>
                     {% for i in "iii" %}
                         <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
                             <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
@@ -42,7 +42,7 @@
                         </select>
                     {% endfor %}
                 {% elif pizza.select_toppings.number == "Special"%}
-                    <h3>Add toppings:</h3>
+                    <h4><strong>Add toppings:</strong></h4>
                     {% for i in "iiii" %}
                         <select required class="form-control" name="topping{{ forloop.counter0|add:'1' }}">
                             <option value="" selected disabled hidden>topping {{ forloop.counter0|add:'1' }}</option>
@@ -58,7 +58,7 @@
             </form>
 
         </div>
-        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+        <div id="picture" class="col-sm-12 col-md-7 col-lg-6">
             <img src="{% static 'orders/img/pizza.png' %}">
         </div>
     </div>

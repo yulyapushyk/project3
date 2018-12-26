@@ -5,7 +5,7 @@
 
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
+        <div id="detail" class="col-sm-12 col-md-4 col-lg-6">
             <h1 style="font-size: 60px;">Salad</h1>
             <h1>{{ salad.name }}</h1><br>
             <h3><strong>Price:</strong> {{ salad.price }}$</h3>
@@ -16,7 +16,7 @@
                 <br><br>
             </form>
         </div>
-        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+        <div id="picture" class="col-sm-12 col-md-8 col-lg-6">
             <img src="{% static 'orders/img/salad.jpg' %}" style="margin-top: 10px;">
         </div>
     </div>

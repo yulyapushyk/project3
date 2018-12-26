@@ -4,7 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
     <div class="row">
-        <div id="detail" class="col-sm-12 col-md-4 col-lg-5">
+        <div id="detail" class="col-sm-12 col-md-4 col-lg-6">
             <h1 style="font-size: 55px;">Dinner Platters</h1>
             <h1>{{ dinner_platter.name }}</h1><br>
             <h3><strong>Size:</strong> {{ dinner_platter.size }}</h3>
@@ -15,7 +15,7 @@
                 <br><br>
             </form>
         </div>
-        <div id="picture" class="col-sm-12 col-md-8 col-lg-7">
+        <div id="picture" class="col-sm-12 col-md-8 col-lg-6">
             <img src="{% static 'orders/img/dinner_platters.jpg' %}" style="margin-top: 10px;">
         </div>
     </div>

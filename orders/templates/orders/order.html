@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Order{% endblock %}
 {% block content %}
-
 {% if user.is_authenticated %}
     {%  if user.is_staff %}
         {% if not orders %}
@@ -10,31 +9,31 @@
         {% else %}
             <h1 style="text-align: center">Orders</h1>
             {% for order in orders %}
-                 {% if order.done %}
-                <div class="row" style="background-color: #47c25e;">
+                {% if order.done %}
+                    <div class="row" style="background-color: #47c25e;">
                 {% else %}
-                 <div class="row" style="background-color: antiquewhite;">
-                  {% endif %}
+                    <div class="row" style="background-color: antiquewhite;">
+                {% endif %}
                     <div id="detail" class="col-sm-12 col-md-6 col-lg-6">
-            <h5><strong>Order:</strong> #{{ order.id }}</h5>
-            <h5><strong>User:</strong> {{ order.username }}</h5>
-            <h5><strong>Date:</strong> {{ order.date }}</h5>
-            <h5><strong>Status:</strong>{% if order.done %} done{% else %} in process</h5>{% endif %}
+                        <h5><strong>Order:</strong> #{{ order.id }}</h5>
+                        <h5><strong>User:</strong> {{ order.username }}</h5>
+                        <h5><strong>Date:</strong> {{ order.date }}</h5>
+                        <h5><strong>Status:</strong>{% if order.done %} done{% else %} in process</h5>{% endif %}
                     </div>
             <div id="detail" class="col-sm-12 col-md-6 col-lg-6">
                 {% for item in order.order_items.all %}
                     <h5>{{ item }}
                         {% if item.toppings.all|length > 0 %}
-                        <ul style="font-size: 20px;">
-                            {% for topping in item.toppings.all %}
-                                <li>{{ topping }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %} </h5>
+                            <ul style="font-size: 20px;">
+                                {% for topping in item.toppings.all %}
+                                    <li>{{ topping }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}</h5>
                 {% endfor %}
                 <h5><strong>Total {{ order.total }}$</strong></h5>
             </div>
-            </div><br>
+            </div>
             {% endfor %}
         {% endif %}
     {%  else %}
@@ -42,11 +41,10 @@
         {% if not orders_user %}
             <h1>No orders in process</h1>
         {% else %}
-            <h1> Your Order</h1>
+            <h2>Your Order</h2><br>
             {% for order in orders_user %}
-
-                <h3 style="font-weight: bold"> #{{ order.id }} ({{ order.date|date:"D d M Y" }})
-                <h3><strong>Status:{% if order.done %}<span style="color: #239346;"> done</span>{% else %}<span style="color: #e73c50;"> in process</span></strong>{% endif %}</h3>
+                <h4 style="font-weight: bold"> #{{ order.id }} ({{ order.date|date:"D d M Y" }})
+                <h4><strong>Status:{% if order.done %}<span style="color: #239346;"> done</span>{% else %}<span style="color: #e73c50;"> in process</span></strong>{% endif %}</h4>
                 {% for item in order.order_items.all %}
                     <h5>{{ item }}<br>
                         {% if item.toppings.all|length > 0 %}
@@ -56,7 +54,7 @@
                                 {% endfor %}
                             </ul>
                         {% endif %}</h5>
-                {% endfor %}<br>
+                {% endfor %}
                 <h4><strong>Total</strong> {{ order.total }}$</h4><hr>
             {% endfor %}
         {% endif %}
