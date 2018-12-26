@@ -7,6 +7,18 @@
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,1)!important;
 }
+
+ul{
+    font-size: 20px;
+}
+.nav-link {
+    display: inline;
+}
+.navbar-text{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 a {
     color: #239346 !important;
 }
@@ -35,9 +47,7 @@ th{
     font-size: 25px;
     color: #e73c50;
 }
-ul{
-    font-size: 20px;
-}
+
 .center_text {
     text-align: center;
 }
@@ -60,9 +70,13 @@ img{
     #detail {
         text-align: center;
     }
+    #order{
+        padding-left: 50px!important;
+        padding-right: 50px!important;
+    }
     #detail_sub{
         text-align: left;
-        padding-left: 27%;
+        padding-left: 33%;
     }
     h6{
         font-size: 16px;
@@ -70,8 +84,11 @@ img{
     h5{
         font-size: 16px;
     }
+    #navbar{
+    font-size: 12px;
+    }
     ul {
-        font-size: 16px;
+        font-size: 16px!important;
     }
      #big, h1{
      font-size: 23px;
@@ -91,11 +108,16 @@ img{
  .center_h1 {
      margin-left: 20%;
  }
+ #navbar{
+    font-size: 14px;
+}
  h1{
      font-size: 33px;
  }
-    #big{
-     font-size: 33px;
+    #big {
+        font-size: 33px;
+    }
+    #product_h1{
       padding-bottom: 10px;
     }
  h3{
@@ -116,8 +138,10 @@ img{
     #detail{
         padding-left: 80px;
     }
-    #big{
+    #big {
         font-size: 55px;
+    }
+    #product_h1{
         padding-bottom: 10px;
     }
 }

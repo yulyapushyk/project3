@@ -10,9 +10,9 @@
             <h1 style="text-align: center">Orders</h1>
             {% for order in orders %}
                 {% if order.done %}
-                    <div class="row" style="background-color: #47c25e;">
+                    <div class="row" style="background-color: #47c25e; margin: auto;">
                 {% else %}
-                    <div class="row" style="background-color: antiquewhite;">
+                    <div class="row" style="background-color: antiquewhite; margin: auto">
                 {% endif %}
                     <div id="detail" class="col-sm-12 col-md-6 col-lg-6">
                         <h5><strong>Order:</strong> #{{ order.id }}</h5>
@@ -33,7 +33,7 @@
                 {% endfor %}
                 <h5><strong>Total {{ order.total }}$</strong></h5>
             </div>
-            </div>
+            </div><br>
             {% endfor %}
         {% endif %}
     {%  else %}

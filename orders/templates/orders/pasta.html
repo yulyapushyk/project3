@@ -7,12 +7,12 @@
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
             <h1 id="big">Pasta</h1>
-            <h1>{{ pasta.name }}</h1>
+            <h1 id="product_h1">{{ pasta.name }}</h1>
             <h3><strong>Price: </strong> {{ pasta.price }}$</h3>
             <form action="{% url 'pasta_order' pasta.id %}" method="post">
                 {% csrf_token %}
                 <div id="button">
-                    <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
+                    <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to cart" /></div>
             </form>
         </div>
         <div id="picture" class="col-sm-12 col-md-7 col-lg-6">

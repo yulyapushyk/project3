@@ -6,8 +6,8 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
-            <h1>Sub</h1>
-            <h1 id =big>{{ sub.name }}</h1>
+            <h1 id="big">Sub</h1>
+            <h1>{{ sub.name }}</h1>
             <h3><strong>Size: </strong> {{ sub.size }}</h3>
             <h3><strong>Price: </strong> {{ sub.price }}$</h3>
         <div id="detail_sub" >
@@ -23,7 +23,7 @@
                     <label style="font-size: 19px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label>
                 {% endif %}
              <div id="button">
-                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
+                 <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to cart" /></div>
             </form>
         </div>
         </div>
