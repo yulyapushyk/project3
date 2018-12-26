@@ -6,7 +6,8 @@
 {% if user.is_authenticated %}
     <div class="row">
         <div id="detail" class="col-sm-12 col-md-5 col-lg-6">
-            <h1 id="big">Sub {{ sub.name }}</h1>
+            <h1>Sub</h1>
+            <h1 id =big>{{ sub.name }}</h1>
             <h3><strong>Size: </strong> {{ sub.size }}</h3>
             <h3><strong>Price: </strong> {{ sub.price }}$</h3>
         <div id="detail_sub" >
@@ -15,11 +16,11 @@
                 {% if sub.id == 41  or sub.id == 42 %}
                     {% for extra_sub in extra_sub %}
                         <input style="margin-left: 150px;" class="form-check-input" type="checkbox" value="{{ extra_sub }}" name="extra{{ forloop.counter0|add:'1' }}" id="extra{{ forloop.counter0|add:'1' }}">
-                        <label style=" font-size: 20px;" class="form-check-label" for="extra{{ forloop.counter0|add:'1' }}">{{ extra_sub.name }}</label><br>
+                        <label style=" font-size: 19px;" class="form-check-label" for="extra{{ forloop.counter0|add:'1' }}">{{ extra_sub.name }}</label><br>
                     {% endfor %}
                 {% else %}
                     <input style="margin-left: 140px; font-size: 20px; margin-top: 10px;"  class="form-check-input" type="checkbox" name="extra0" value="{{ extra_sub.last }}" id="extra0">
-                    <label style="font-size: 20px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label>
+                    <label style="font-size: 19px;" class="form-check-label" for="extra0">{{ extra_sub.last.name }}</label>
                 {% endif %}
              <div id="button">
                  <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value="Add to basket" /></div>
