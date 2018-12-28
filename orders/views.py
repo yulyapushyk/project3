@@ -418,7 +418,7 @@ def send_email(request):
         {}, thanks for your order #{} on {}$.
         It is completed and sent to you.
         You will soon get it. 
-        Here is detail information about your order http://127.0.0.1:8000/orders. 
+        Here is detail information about your order https://yulya-project3.herokuapp.com/orders.
         Bon appetite!
 
         Pinocchio's Pizza & Subs
