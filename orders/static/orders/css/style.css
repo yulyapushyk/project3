@@ -14,20 +14,22 @@ ul{
 .nav-link {
     display: inline;
 }
+
+
 .navbar-text{
     padding-top: 0;
     padding-bottom: 0;
 }
 
 a {
-    color: #239346 !important;
+    color: #0066c0!important;
 }
 h1 {
     color: #239346;
     font-weight: bold;
 }
 #button{
-    padding: 7px;
+    padding-top: 10px;
 }
 p{
     font-size: 20px;
@@ -64,9 +66,13 @@ img{
  }
 
 @media screen and (max-width: 767px) {
+    #logo{
+        width: auto; height: 50px;
+    }
     .center_text{
         margin-left: 20px;
     }
+
     #detail {
         text-align: center;
     }
@@ -84,11 +90,11 @@ img{
     h5{
         font-size: 16px;
     }
-    #navbar{
+    #navbar {
     font-size: 12px;
     }
     ul {
-        font-size: 16px!important;
+        font-size: 16px;
     }
      #big, h1{
      font-size: 23px;
@@ -127,6 +133,9 @@ img{
      text-align: left;
      padding-left: 30px;
  }
+ #logo{
+        width: auto; height: 65px;
+    }
 }
 @media screen and (min-width: 1024px) {
     h6 {
@@ -144,4 +153,9 @@ img{
     #product_h1{
         padding-bottom: 10px;
     }
+    #logo{
+        width: auto; height: 90px;
+    }
+
+
 }
