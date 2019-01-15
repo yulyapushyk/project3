@@ -12,10 +12,10 @@
                     <div class="col-6 col-sm-6 col-md-5 col-lg-4 text-left">
                         <h5><strong>Shopping cart</strong></h5>
                     </div>
-            <div class="col-4 col-sm-4 col-md-3 col-lg-2 text-left">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-2 text-left">
                 <h5><strong>Price</strong></h5>
                     </div>
-            <div class="col-2 col-sm-2 col-md-1 col-lg-1 text-left">
+            <div class="col-3 col-sm-3 col-md-1 col-lg-1 text-left">
                 <h5><strong>Quantity</strong></h5>
             </div>
              </div>
@@ -33,11 +33,11 @@
                             </ul>
                         {% endif %}
                     </div>
-                    <div class="col-4 col-sm-4 col-md-3 col-lg-2 text-left">
+                    <div class="col-3 col-sm-3 col-md-3 col-lg-2 text-left">
                         <h5><span>{{ item.food.price }} </span></h5>
                     </div>
 
-                 <div class="col-2 col-sm-2 col-md-1 col-lg-1 text-left">
+                 <div class="col-3 col-sm-3 col-md-1 col-lg-1 text-left">
 
                      <form action="{% url 'delete' %}" method="post">
                             {% csrf_token %}
