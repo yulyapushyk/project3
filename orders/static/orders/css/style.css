@@ -7,6 +7,13 @@
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,1)!important;
 }
+input[type=number] {
+    width: 50px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+      width: 50px;
+}
 
 ul{
     font-size: 20px;
@@ -88,13 +95,16 @@ img{
         font-size: 16px;
     }
     h5{
-        font-size: 16px;
+        font-size: 14px;
+    }
+     .order_ul{
+        font-size: 14px;
     }
     #navbar {
     font-size: 12px;
     }
     ul {
-        font-size: 16px;
+        font-size: 14px;
     }
      #big, h1{
      font-size: 23px;
@@ -102,8 +112,14 @@ img{
     h3{
         font-size: 19px;
     }
+    h2{
+        font-size: 25px;
+    }
     .center_h1 {
         margin-left: 10%;
+    }
+    #order_style{
+        margin-left: 7%;
     }
 
 }
@@ -114,12 +130,19 @@ img{
  .center_h1 {
      margin-left: 20%;
  }
+ h5{
+        font-size: 16px;
+    }
+ ul{
+        font-size: 16px;
+    }
  #navbar{
     font-size: 14px;
 }
  h1{
      font-size: 33px;
  }
+
     #big {
         font-size: 33px;
     }
@@ -136,8 +159,14 @@ img{
  #logo{
         width: auto; height: 65px;
     }
+ #order_style{
+        margin-left:5%;
+    }
 }
 @media screen and (min-width: 1024px) {
+    h5{
+        font-size: 18px;
+    }
     h6 {
         font-size: 23px;
     }
@@ -156,6 +185,11 @@ img{
     #logo{
         width: auto; height: 90px;
     }
-
+    .order_ul{
+        font-size: 18px;
+    }
+    #order_style{
+        margin-left:15%;
+    }
 
 }

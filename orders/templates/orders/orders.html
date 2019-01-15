@@ -19,7 +19,7 @@
                     </div>
                     <div id="detail" class="col-sm-12 col-md-6 col-lg-5">
                         {% for item in order.order_items.all %}
-                            <h5>{{ item }}
+                            <h5>{{ item }} * {{ item.quantity }}
                                 {% if item.toppings.all|length > 0 %}
                                     <ul>
                                         {% for topping in item.toppings.all %}

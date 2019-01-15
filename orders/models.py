@@ -64,8 +64,8 @@ class Food(models.Model):
 
     def __str__(self):
         if self.size:
-            return f"{self.name} {self.size} - {self.price}$"
-        return f"{self.name} - {self.price}$"
+            return f"{self.name} {self.size} - {self.price}"
+        return f"{self.name} - {self.price}"
 
 
 class OrderNumber(models.Model):
@@ -84,7 +84,9 @@ class OrderNumber(models.Model):
 class Order(models.Model):
     username = models.CharField(max_length=64, default='')
     food = models.ForeignKey(Food, related_name='order_food', on_delete=models.CASCADE)
+    quantity = models.CharField(max_length=2, default='1')
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    total_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     order_num = models.ForeignKey(OrderNumber, on_delete=models.CASCADE, related_name="order_items")
     toppings = models.ManyToManyField(Topping, blank=True, related_name='pizza')
     extra = models.BooleanField(default=False)

@@ -63,7 +63,7 @@ def total(order):
         items = order.order_items.all()
         order.total = 0
         for item in items:
-            order.total += item.price
+            order.total += item.price * int(item.quantity)
         order.save()
 
 
@@ -93,6 +93,7 @@ def menu_pizza(request):
             filter(type__type__icontains="Sicilian").filter(size__size__icontains="Large"),
         "cart_count": cart_count(username)
     }
+
     return render(request, "orders/menu_pizza.html", context)
 
 
@@ -114,6 +115,8 @@ def menu_pasta(request):
         "pasta": Food.objects.filter(category__name__icontains="Pasta"),
         "cart_count": cart_count(username),
     }
+
+
     return render(request, "orders/menu_pasta.html", context)
 
 
@@ -123,6 +126,19 @@ def menu_salads(request):
         "salads": Food.objects.filter(category__name__icontains="Salads"),
         "cart_count": cart_count(username)
     }
+    # if request.method == 'POST':
+    #     username = request.user.username
+    #     email = request.user.email
+    #     order = cart1(username, email)
+    #     salad_id = request.POST.get('salad' + str(n), False)
+    #     salad_id = int(request.POST['{{ salads.id }}'])
+    #     print(salad_id)
+    #     salad = Food.objects.filter(category__name__icontains="Salads").get(pk=salad_id)
+    #     number = int(request.POST['number'])
+    #     O = Order(order_num=order, username=username, food=salad, quantity=number, total_price=number * salad.price,
+    #               price=salad.price)
+    #     O.save()
+    #     total(order)
     return render(request, "orders/menu_salads.html", context)
 
 
@@ -194,7 +210,9 @@ def pizza_order(request, pizza_id):
         email = request.user.email
         order = cart1(username, email)
         pizza.save()
-        O = Order(order_num=order, username=username,  food=pizza, price=pizza_price)
+        number = int(request.POST['number'])
+        O = Order(order_num=order, username=username, food=pizza, quantity=number, total_price=number * pizza_price,
+                  price=pizza_price)
         O.save()
         total(order)
         if pizza.select_toppings.number == "Special":
@@ -234,7 +252,9 @@ def sub_order(request, sub_id):
         email = request.user.email
         order = cart1(username, email)
         sub.save()
-        O = Order(order_num=order, username=username, food=sub, price=sub_price)
+        number = int(request.POST['number'])
+        O = Order(order_num=order, username=username, food=sub, quantity=number, total_price=number * sub_price,
+                  price=sub_price)
         O.save()
         total(order)
         for n in range(5):
@@ -249,11 +269,13 @@ def sub_order(request, sub_id):
                     raise Http404("Can't find extra sub.")
                 else:
                     O.extra_sub.add(itemextra)
-                    sub_extra = Order(order_num=order, username=username, food=extra, price=extra.price.price,
-                                     extra=True)
+                    extra_price = extra.price.price
+                    sub_extra = Order(order_num=order, username=username, quantity=number, food=extra,
+                                      price=extra.price.price, total_price=number * extra_price,
+                                      extra=True)
                     sub_extra.save()
                     total(order)
-    return HttpResponseRedirect(reverse("menu_subs"))
+    return HttpResponseRedirect(reverse("menu_subs"), {'number': number})
 
 
 def pasta_order(request, pasta_id):
@@ -264,7 +286,9 @@ def pasta_order(request, pasta_id):
         email = request.user.email
         order = cart1(username, email)
         pasta.save()
-        O = Order(order_num=order, username=username, food=pasta, price=pasta_price)
+        number = int(request.POST['number'])
+        O = Order(order_num=order, username=username, food=pasta, quantity=number, total_price=number * pasta_price,
+                  price=pasta_price)
         O.save()
         total(order)
     return HttpResponseRedirect(reverse("menu_pasta"))
@@ -278,7 +302,9 @@ def salads_order(request, salad_id):
         email = request.user.email
         order = cart1(username, email)
         salad.save()
-        O = Order(order_num=order, username=username, food=salad, price=salad_price)
+        number = int(request.POST['number'])
+        O = Order(order_num=order, username=username, food=salad, quantity=number, total_price=number * salad_price,
+                  price=salad_price)
         O.save()
         total(order)
     return HttpResponseRedirect(reverse("menu_salads"))
@@ -292,7 +318,9 @@ def dinner_platters_order(request, dinner_platters_id):
         email = request.user.email
         order = cart1(username, email)
         dinner_platter.save()
-        O = Order(order_num=order, username=username, food=dinner_platter, price=dinner_platter_price)
+        number = int(request.POST['number'])
+        O = Order(order_num=order, username=username, food=dinner_platter, quantity=number, total_price=number * dinner_platter_price,
+                  price=dinner_platter_price)
         O.save()
         total(order)
     return HttpResponseRedirect(reverse("menu_dinner_platters"))
@@ -305,6 +333,11 @@ def cart(request):
         return redirect('login')
     order = cart1(username, email)
     cart = order.order_items.all()
+    for item in cart:
+        total_food = int(item.quantity) * item.price
+        print(total_food)
+    extra = order.order_items.all().filter(extra=True)
+    print(extra)
     total = order.total
     return render(request, 'orders/cart.html', {'cart': cart, 'cart_count': cart_count(username),
                                                 'total': total, 'order': order, })

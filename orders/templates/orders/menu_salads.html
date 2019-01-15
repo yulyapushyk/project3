@@ -3,10 +3,19 @@
 {% block content %}
     <table class="table-striped table-bordered table-hover table-condensed col-sm-12">
         <th class="text-center">Salads</th><th class="text-center">Price</th>
+{#        <th>Add to cart</th>#}
         {% for salads in salads %}
             <tr>
                 <td class="text-center"><a href="{% url 'salads' salads.id %}">{{ salads.name }}</a>
                 </td><td class="text-center">{{ salads.price }}</td>
+{#                <td>#}
+{#                    <form method="post">#}
+{#                {% csrf_token %}#}
+{#                        <input type="number" value="1" name="number" min="1" max="10" />#}
+{##}
+{#                <input id="button" class="btn-lg btn-primary btn-danger" type="submit" value={{ salads.id }} name="salads{{ salads.id }}" />#}
+{#                 </form>#}
+{#                </td>#}
             </tr>
         {% endfor %}
     </table>

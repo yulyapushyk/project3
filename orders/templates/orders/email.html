@@ -7,7 +7,7 @@
 <div>
     <h3>{{ username.first_name|title }} {{ username.last_name|title }}, thanks for your order:</h3>
     {% for item in cart %}
-        <p>{{ item.food }}
+         <p>{{ item.food }} * {{ item.quantity }}
         {% if item.toppings.all %}
             <ul>
                 {% for topping in item.toppings.all %}
